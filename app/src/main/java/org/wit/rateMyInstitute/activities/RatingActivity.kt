@@ -75,7 +75,7 @@ class RatingActivity : AppCompatActivity() {
         }
 
         binding.chooseImage.setOnClickListener {
-            showImagePicker(imageIntentLauncher)
+            showImagePicker(imageIntentLauncher,this)
         }
 
         binding.ratingLocation.setOnClickListener {
@@ -110,10 +110,15 @@ class RatingActivity : AppCompatActivity() {
                     RESULT_OK -> {
                         if (result.data != null) {
                             i("Got Result ${result.data!!.data}")
-                            rating.image = result.data!!.data!!
+
+                            val image = result.data!!.data!!
+                            contentResolver.takePersistableUriPermission(image,
+                                Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                            rating.image = image
+
                             Picasso.get()
-                                   .load(rating.image)
-                                   .into(binding.ratingImage)
+                                .load(rating.image)
+                                .into(binding.ratingImage)
                             binding.chooseImage.setText(R.string.change_rating_image)
                         } // end of if
                     }
