@@ -28,8 +28,15 @@ class RatingMemStore : RatingStore {
             foundRating.title = rating.title
             foundRating.description = rating.description
             foundRating.image = rating.image
+            foundRating.lat = rating.lat
+            foundRating.lng = rating.lng
+            foundRating.zoom = rating.zoom
             logAll()
         }
+    }
+
+    override fun delete(rating: RatingModel) {
+        ratings.remove(rating)
     }
 
     private fun logAll() {

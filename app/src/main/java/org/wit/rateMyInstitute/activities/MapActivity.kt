@@ -16,7 +16,9 @@ import org.wit.rateMyInstitute.R
 import org.wit.rateMyInstitute.databinding.ActivityMapBinding
 import org.wit.rateMyInstitute.models.Location
 
-class MapActivity : AppCompatActivity(), OnMapReadyCallback,  GoogleMap.OnMarkerDragListener {
+class MapActivity : AppCompatActivity(), OnMapReadyCallback,
+                                            GoogleMap.OnMarkerDragListener,
+                                            GoogleMap.OnMarkerClickListener {
 
     private lateinit var map: GoogleMap
     private lateinit var binding: ActivityMapBinding
@@ -40,12 +42,19 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback,  GoogleMap.OnMarker
             .snippet("GPS : $loc")
             .draggable(true)
             .position(loc)
+        map.setOnMarkerClickListener(this)
         map.addMarker(options)
         map.setOnMarkerDragListener(this)
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, location.zoom))
     }
 
     override fun onMarkerDrag(p0: Marker) { }
+
+    override fun onMarkerClick(marker: Marker): Boolean {
+        val loc = LatLng(location.lat, location.lng)
+        marker.snippet = "GPS : $loc"
+        return false
+    }
 
     override fun onMarkerDragEnd(marker: Marker) {
         location.lat = marker.position.latitude

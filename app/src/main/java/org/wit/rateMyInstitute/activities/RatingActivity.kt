@@ -20,17 +20,18 @@ import timber.log.Timber.Forest.i
 
 class RatingActivity : AppCompatActivity() {
 
+    var edit = false
     private lateinit var binding: ActivityRatingBinding
     var rating = RatingModel()
     lateinit var app: MainApp
     private lateinit var imageIntentLauncher : ActivityResultLauncher<Intent>
     private lateinit var mapIntentLauncher : ActivityResultLauncher<Intent>
-    var location = Location(52.245696, -7.139102, 15f)
+    //var location = Location(52.245696, -7.139102, 15f)
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+        edit = false
 
-        var edit = false
+        super.onCreate(savedInstanceState)
 
         binding = ActivityRatingBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -79,6 +80,12 @@ class RatingActivity : AppCompatActivity() {
         }
 
         binding.ratingLocation.setOnClickListener {
+            val location = Location(52.245696, -7.139102, 15f)
+            if (rating.zoom != 0f) {
+                location.lat =  rating.lat
+                location.lng = rating.lng
+                location.zoom = rating.zoom
+            }
             val launcherIntent = Intent(this, MapActivity::class.java)
                 .putExtra("location", location)
             mapIntentLauncher.launch(launcherIntent)
@@ -90,17 +97,24 @@ class RatingActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_rating, menu)
+        if (edit) menu.getItem(0).isVisible = true
         return super.onCreateOptionsMenu(menu)
     }
 
+
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.item_cancel -> {
+            R.id.item_delete -> {
+                setResult(99)
+                app.ratings.delete(rating)
                 finish()
-            }
+            }        R.id.item_cancel -> { finish() }
         }
         return super.onOptionsItemSelected(item)
     }
+
+
 
     private fun registerImagePickerCallback() {
         imageIntentLauncher =
@@ -135,8 +149,11 @@ class RatingActivity : AppCompatActivity() {
                     RESULT_OK -> {
                         if (result.data != null) {
                             i("Got Location ${result.data.toString()}")
-                            location = result.data!!.extras?.getParcelable("location")!!
+                            val location = result.data!!.extras?.getParcelable<Location>("location")!!
                             i("Location == $location")
+                            rating.lat = location.lat
+                            rating.lng = location.lng
+                            rating.zoom = location.zoom
                         } // end of if
                     }
                     RESULT_CANCELED -> { } else -> { }

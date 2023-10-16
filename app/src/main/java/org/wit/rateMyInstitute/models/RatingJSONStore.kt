@@ -42,7 +42,22 @@ class RatingJSONStore(private val context: Context) : RatingStore {
 
 
     override fun update(rating: RatingModel) {
-        // todo
+        val ratingsList = findAll() as ArrayList<RatingModel>
+        var foundrating: RatingModel? = ratingsList.find { p -> p.id == rating.id }
+        if (foundrating != null) {
+            foundrating.title = rating.title
+            foundrating.description = rating.description
+            foundrating.image = rating.image
+            foundrating.lat = rating.lat
+            foundrating.lng = rating.lng
+            foundrating.zoom = rating.zoom
+        }
+        serialize()
+    }
+
+    override fun delete(rating: RatingModel) {
+        ratings.remove(rating)
+        serialize()
     }
 
     private fun serialize() {

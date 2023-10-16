@@ -14,6 +14,7 @@ class MainApp : Application() {
     override fun onCreate() {
         super.onCreate()
         Timber.plant(Timber.DebugTree())
+        //ratings = RatingMemStore()
         ratings = RatingJSONStore(applicationContext)
         i("rating started")
 

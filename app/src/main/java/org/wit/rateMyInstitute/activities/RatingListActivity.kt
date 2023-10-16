@@ -19,6 +19,7 @@ class RatingListActivity : AppCompatActivity(), RatingListener {
 
     lateinit var app: MainApp
     private lateinit var binding: ActivityRatingListBinding
+    private var position: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,6 +50,13 @@ class RatingListActivity : AppCompatActivity(), RatingListener {
         return super.onOptionsItemSelected(item)
     }
 
+    override fun onRatingClick(rating: RatingModel, pos : Int) {
+        val launcherIntent = Intent(this, RatingActivity::class.java)
+        launcherIntent.putExtra("rating_edit", rating)
+        position = pos
+        getClickResult.launch(launcherIntent)
+    }
+
      private val getResult =
         registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()
@@ -59,12 +67,6 @@ class RatingListActivity : AppCompatActivity(), RatingListener {
             }
         }
 
-    override fun onRatingClick(rating: RatingModel) {
-        val launcherIntent = Intent(this, RatingActivity::class.java)
-        launcherIntent.putExtra("rating_edit", rating)
-        getClickResult.launch(launcherIntent)
-    }
-
     private val getClickResult =
         registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()
@@ -73,5 +75,7 @@ class RatingListActivity : AppCompatActivity(), RatingListener {
                 (binding.recyclerView.adapter)?.
                 notifyItemRangeChanged(0,app.ratings.findAll().size)
             }
+            else // Deleting
+                if (it.resultCode == 99)     (binding.recyclerView.adapter)?.notifyItemRemoved(position)
         }
 }
