@@ -46,6 +46,10 @@ class RatingListActivity : AppCompatActivity(), RatingListener {
                 val launcherIntent = Intent(this, RatingActivity::class.java)
                 getResult.launch(launcherIntent)
             }
+            R.id.item_map -> {
+                val launcherIntent = Intent(this, RatingMapsActivity::class.java)
+                mapIntentLauncher.launch(launcherIntent)
+            }
         }
         return super.onOptionsItemSelected(item)
     }
@@ -78,4 +82,9 @@ class RatingListActivity : AppCompatActivity(), RatingListener {
             else // Deleting
                 if (it.resultCode == 99)     (binding.recyclerView.adapter)?.notifyItemRemoved(position)
         }
+
+    private val mapIntentLauncher =
+        registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()
+        )    { }
 }
