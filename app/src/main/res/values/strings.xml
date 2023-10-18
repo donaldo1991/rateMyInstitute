@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">rateMyInstitute</string>
+    <string name="app_name">Institute Rating App</string>
     <string name="button_addRating">Add Institute Rating</string>
     <string name="hint_instituteTitle">Institute Name</string>
     <string name="hint_instituteDescription">Institute Description </string>
@@ -19,5 +19,10 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
+    <string name="enter_app">Enter</string>
+    <string name="splash_text">Welcome to the first college comparison app for prospective students in Ireland.
+
+        The app compares and ranks institutions across Ireland allowing second-level students make informed decisions on their third-level education.
+    </string>
 
 </resources>
