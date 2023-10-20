@@ -20,8 +20,7 @@ class SplashActivity : AppCompatActivity() {
 
         // Set a click listener for the button
         enterButton.setOnClickListener(View.OnClickListener {
-            // Handle the button click, e.g., navigate to another activity
-            val intent = Intent(this, RatingListActivity::class.java)
+            val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
         })
     }

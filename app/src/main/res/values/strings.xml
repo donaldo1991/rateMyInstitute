@@ -24,5 +24,8 @@
 
         The app compares and ranks institutions across Ireland allowing second-level students make informed decisions on their third-level education.
     </string>
+    <string name="signup_text">Please signup to the College Ratings app</string>
+    <string name="login_text">Please login to the College Ratings app</string>
+    <string name="home_text">Please login or signup to begin</string>
 
 </resources>
