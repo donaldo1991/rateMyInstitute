@@ -41,7 +41,7 @@
                 android:orientation="vertical">
 
                 <EditText
-                    android:id="@+id/ratingTitle"
+                    android:id="@+id/name"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_margin="8dp"
@@ -66,6 +66,51 @@
                     android:padding="8dp"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="14sp" />
+
+                <TableRow
+                    android:layout_width="397dp"
+                    android:layout_height="93dp">
+
+                    <EditText
+                        android:id="@+id/fee"
+                        android:layout_width="98dp"
+                        android:layout_height="70dp"
+                        android:layout_margin="16dp"
+                        android:hint="Fee"
+                        android:inputType="number"
+                        android:maxLength="5"
+                        android:maxLines="1"
+                        android:padding="2dp"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="14sp" />
+
+                    <EditText
+                        android:id="@+id/overallRating"
+                        android:layout_width="98dp"
+                        android:layout_height="70dp"
+                        android:layout_margin="16dp"
+                        android:hint="Overall Rating"
+                        android:inputType="number"
+                        android:maxLength="3"
+                        android:maxLines="1"
+                        android:padding="2dp"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="14sp" />
+
+                    <EditText
+                        android:id="@+id/gradRate"
+                        android:layout_width="98dp"
+                        android:layout_height="70dp"
+                        android:layout_margin="16dp"
+                        android:hint="Graduation Rate"
+                        android:inputType="number"
+                        android:maxLength="3"
+                        android:maxLines="1"
+                        android:padding="2dp"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="14sp" />
+
+                </TableRow>
 
                 <Button
                     android:id="@+id/btnAdd"
@@ -120,7 +165,7 @@
                 <ImageView
                     android:id="@+id/ratingImage"
                     android:layout_width="match_parent"
-                    android:layout_height="336dp"
+                    android:layout_height="253dp"
                     app:srcCompat="@mipmap/ic_launcher" />
 
             </LinearLayout>

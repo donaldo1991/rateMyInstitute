@@ -65,7 +65,7 @@ class RatingMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListener 
         map.uiSettings.isZoomControlsEnabled = true
         app.ratings.findAll().forEach {
             val loc = LatLng(it.lat, it.lng)
-            val options = MarkerOptions().title(it.title).position(loc)
+            val options = MarkerOptions().title(it.name).position(loc)
             map.addMarker(options)?.tag = it.id
             map.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, it.zoom))
         }

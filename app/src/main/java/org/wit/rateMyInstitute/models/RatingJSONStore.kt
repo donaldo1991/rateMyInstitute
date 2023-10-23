@@ -45,8 +45,11 @@ class RatingJSONStore(private val context: Context) : RatingStore {
         val ratingsList = findAll() as ArrayList<RatingModel>
         var foundrating: RatingModel? = ratingsList.find { p -> p.id == rating.id }
         if (foundrating != null) {
-            foundrating.title = rating.title
+            foundrating.name = rating.name
             foundrating.description = rating.description
+            foundrating.fee = rating.fee
+            foundrating.overallRating = rating.overallRating
+            foundrating.gradRate = rating.gradRate
             foundrating.image = rating.image
             foundrating.lat = rating.lat
             foundrating.lng = rating.lng

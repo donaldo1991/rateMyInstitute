@@ -25,8 +25,11 @@ class RatingMemStore : RatingStore {
     override fun update(rating: RatingModel) {
         var foundRating: RatingModel? = ratings.find { p -> p.id == rating.id }
         if (foundRating != null) {
-            foundRating.title = rating.title
+            foundRating.name = rating.name
             foundRating.description = rating.description
+            foundRating.fee = rating.fee
+            foundRating.overallRating = rating.overallRating
+            foundRating.gradRate = rating.gradRate
             foundRating.image = rating.image
             foundRating.lat = rating.lat
             foundRating.lng = rating.lng

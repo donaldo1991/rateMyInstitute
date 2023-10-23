@@ -45,8 +45,11 @@ class RatingActivity : AppCompatActivity() {
         if (intent.hasExtra("rating_edit")) {
             edit = true
             rating = intent.extras?.getParcelable("rating_edit")!!
-            binding.ratingTitle.setText(rating.title)
+            binding.name.setText(rating.name)
             binding.description.setText(rating.description)
+            binding.fee.setText(rating.fee.toString())
+            binding.overallRating.setText(rating.overallRating.toString())
+            binding.gradRate.setText(rating.gradRate.toString())
             binding.btnAdd.setText(R.string.save_rating)
             Picasso.get()
                 .load(rating.image)
@@ -58,9 +61,12 @@ class RatingActivity : AppCompatActivity() {
         }
 
         binding.btnAdd.setOnClickListener() {
-            rating.title = binding.ratingTitle.text.toString()
+            rating.name = binding.name.text.toString()
             rating.description = binding.description.text.toString()
-            if (rating.title.isEmpty()) {
+            rating.fee = binding.fee.text.toString().toDouble()
+            rating.overallRating = binding.overallRating.text.toString().toInt()
+            rating.gradRate = binding.gradRate.text.toString().toInt()
+            if (rating.name.isEmpty()) {
                 Snackbar.make(it,R.string.enter_rating_title, Snackbar.LENGTH_LONG)
                         .show()
             } else {

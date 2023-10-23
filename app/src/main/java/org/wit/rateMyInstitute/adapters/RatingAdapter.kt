@@ -33,8 +33,11 @@ class RatingAdapter constructor(private var ratings: List<RatingModel>,
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(rating: RatingModel, listener: RatingListener) {
-            binding.ratingTitle.text = rating.title
+            binding.name.text = rating.name
             binding.description.text = rating.description
+            binding.fee.text = rating.fee.toString()
+            binding.overallRating.text = rating.overallRating.toString()
+            binding.gradRate.text = rating.gradRate.toString()
             Picasso.get().load(rating.image).resize(200,200).into(binding.imageIcon)
             binding.root.setOnClickListener { listener.onRatingClick(rating,adapterPosition) }
         }
