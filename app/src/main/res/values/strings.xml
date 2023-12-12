@@ -1,31 +1,49 @@
 <resources>
-    <string name="app_name">Institute Rating App</string>
-    <string name="button_addRating">Add Institute Rating</string>
-    <string name="hint_instituteTitle">Institute Name</string>
-    <string name="hint_instituteDescription">Institute Description </string>
-    <string name="menu_addRating">Add</string>
-    <string name="menu_cancelRating">Cancel</string>
-    <string name="enter_rating_title"> Please enter the name of the institution </string>
-    <string name="save_rating"> Save Rating </string>
-    <string name="button_addImage"> Add Image </string>
-    <string name="select_rating_image">Select institute image</string>
+    <string name="app_name">rateMyInstitute</string>
+    <string name="ratingTitle">Welcome</string>
+    <string name="ratingSubtitle">Please leave an honest review!</string>
+    <string name="ratingButton">Submit Rating</string>
+    <string name="name">Institute Name</string>
+    <string name="instituteName">Enter Institute Name</string>
+    <string name="description">Institute Description</string>
+    <string name="instituteDescription">Enter Institute Description</string>
+    <string name="fee">Institute Fee</string>
+    <string name="instituteFee">Enter Institute Fee</string>
+    <string name="overallRating">Institute Rating</string>
+    <string name="instituteOverallRating">Enter Institute Rating</string>
+    <string name="gradRate">Institute Grad Rate</string>
+    <string name="instituteGradRate">Enter Institute Grad Rate</string>
+    <string name="rating">9.4</string>
+    <string name="direct">Direct</string>
+    <string name="amount">Amount</string>
+    <string name="total">Total so Far</string>
+    <string name="totalSoFar">$%d</string>
+    <string name="reportTitle">Donations Report</string>
+    <string name="defaultAmount">00</string>
+    <string name="defaultMethod">N/A</string>
     <string name="change_rating_image">Change institute image</string>
-    <string name="button_location">Set Location</string>
-    <string name="title_activity_map">MapActivity</string>
-    <string name="menu_deleteRating">Delete</string>
-    <string name="title_activity_rating_maps">Map of All Institutes</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
-    <string name="enter_app">Enter</string>
-    <string name="splash_text">Welcome to the first college comparison app for prospective students in Ireland.
+    <string name="enter_amount">Enter Amount</string>
+    <string name="action_rating">Rate</string>
+    <string name="action_report">Report</string>
 
-        The app compares and ranks institutions across Ireland allowing second-level students make informed decisions on their third-level education.
-    </string>
-    <string name="signup_text">Please signup to the College Ratings app</string>
-    <string name="login_text">Please login to the College Ratings app</string>
-    <string name="home_text">Please login or signup to begin</string>
+    <string name="action_share">Share</string>
+    <string name="action_send">Send</string>
+    <string name="group_communicate">Communicate</string>
 
+    <string name="nav_header_title">DonationX (Lab)</string>
+    <string name="nav_header_subtitle">voteforhomer@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+
+    <string name="action_about">About Us</string>
+    <string name="aboutus_title">Homer for President !!</string>
+    <string name="aboutus_message">Welcome to the first college comparison app for prospective students in Ireland.\n\nThe app compares and ranks institutions across Ireland allowing second-level students make informed decisions on their third-level education.</string>
+
+    <string name="donationsNotFound">No Ratings Yet…\nPlease leave a review!</string>
+    <string name="donationError">Error : Couldn\'t Make a Donation…</string>
+    <string name="donationDetails">Donation Details</string>
+
+    <string name="amt">Amount :</string>
+    <string name="payment">Payment :</string>
+    <string name="message">Message :</string>
+    <string name="upvotes">UpVotes :</string>
 </resources>

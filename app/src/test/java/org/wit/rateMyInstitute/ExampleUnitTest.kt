@@ -1,4 +1,4 @@
-package org.wit.rateMyInstitute
+package ie.wit.donationx
 
 import org.junit.Test
 
