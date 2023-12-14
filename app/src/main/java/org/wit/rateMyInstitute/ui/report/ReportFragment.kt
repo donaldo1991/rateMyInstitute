@@ -32,16 +32,16 @@ class ReportFragment : Fragment(), RatingClickListener {
     }
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         _fragBinding = FragmentReportBinding.inflate(inflater, container, false)
         val root = fragBinding.root
         //activity?.title = getString(R.string.action_report)
-	setupMenu()
+        setupMenu()
         fragBinding.recyclerView.layoutManager = LinearLayoutManager(activity)
         reportViewModel = ViewModelProvider(this).get(ReportViewModel::class.java)
-        reportViewModel.observableDonationsList.observe(viewLifecycleOwner, Observer {
+        reportViewModel.observableRatingsList.observe(viewLifecycleOwner, Observer {
                 ratings ->
             ratings?.let { render(ratings) }
         })
@@ -54,7 +54,7 @@ class ReportFragment : Fragment(), RatingClickListener {
         return root
     }
 
-   private fun setupMenu() {
+    private fun setupMenu() {
         (requireActivity() as MenuHost).addMenuProvider(object : MenuProvider {
             override fun onPrepareMenu(menu: Menu) {
                 // Handle for example visibility of menu items

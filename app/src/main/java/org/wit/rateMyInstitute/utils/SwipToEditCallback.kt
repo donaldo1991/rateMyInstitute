@@ -1,4 +1,4 @@
-package ie.wit.donationx.utils
+package org.wit.rateMyInstitute.utils
 
 import android.content.Context
 import android.graphics.*
@@ -6,7 +6,7 @@ import android.graphics.drawable.ColorDrawable
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import ie.wit.donationx.R
+import org.wit.rateMyInstitute.R
 
 abstract class SwipeToEditCallback(context: Context) : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
 

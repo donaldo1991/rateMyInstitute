@@ -1,28 +1,29 @@
 package org.wit.rateMyInstitute.api
 import org.wit.rateMyInstitute.models.RatingModel
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.DELETE
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.PUT
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface RatingService {
     @GET("/ratings")
-    fun getall(): Call<List<RatingModel>>
+    fun findall(): Call<List<RatingModel>>
+    @GET("/ratings/{email}")
+    fun findall(@Path("email") email: String?)
+            : Call<List<RatingModel>>
+    @GET("/ratings/{email}/{id}")
+    fun get(@Path("email") email: String?,
+            @Path("id") id: String): Call<RatingModel>
+    @DELETE("/donations/{email}/{id}")
+    fun delete(@Path("email") email: String?,
+               @Path("id") id: String): Call<RatingWrapper>
 
-    @GET("/ratings/{id}")
-    fun get(@Path("id") id: String): Call<RatingModel>
+    @POST("/donations/{email}")
+    fun post(@Path("email") email: String?,
+             @Body donation: RatingModel)
+            : Call<RatingWrapper>
 
-    @DELETE("/ratings/{id}")
-    fun delete(@Path("id") id: String): Call<RatingWrapper>
-
-    @POST("/ratings")
-    fun post(@Body donation: RatingModel): Call<RatingWrapper>
-
-    @PUT("/ratings/{id}")
-    fun put(@Path("id") id: String,
-            @Body rating: RatingModel
+    @PUT("/donations/{email}/{id}")
+    fun put(@Path("email") email: String?,
+            @Path("id") id: String,
+            @Body donation: RatingModel
     ): Call<RatingWrapper>
 }

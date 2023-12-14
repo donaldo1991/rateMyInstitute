@@ -11,6 +11,6 @@ class RateMyInstituteApp : Application() {
         super.onCreate()
         Timber.plant(Timber.DebugTree())
       //  donationsStore = DonationManager()
-        Timber.i("DonationX Application Started")
+        Timber.i("rateMyInstitute Application Started")
     }
 }

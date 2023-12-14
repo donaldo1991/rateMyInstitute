@@ -28,6 +28,9 @@ class DonationAdapter constructor(private var ratings: List<RatingModel>,
     }
 
     override fun getItemCount(): Int = ratings.size
+    fun removeAt(adapterPosition: Int) {
+
+    }
 
     inner class MainHolder(val binding : CardRatingBinding) : RecyclerView.ViewHolder(binding.root) {
 

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/donateFragment"
-        android:name="org.wit.rateMyInstitute.ui.donate.RatingFragment"
+        android:name="org.wit.rateMyInstitute.ui.rate.RatingFragment"
         android:label="@string/action_rating"
         tools:layout="@layout/fragment_rating" >
         <action
@@ -39,14 +39,14 @@
         tools:layout="@layout/fragment_about" />
     <fragment
         android:id="@+id/donationDetailFragment"
-        android:name="org.wit.rateMyInstitute.ui.detail.DonationDetailFragment"
+        android:name="org.wit.rateMyInstitute.ui.detail.RatingDetailFragment"
         android:label="Donation Detail"
-        tools:layout="@layout/fragment_donation_detail" >
+        tools:layout="@layout/fragment_rating_detail" >
         <action
             android:id="@+id/action_donationDetailFragment_to_reportFragment"
             app:destination="@id/reportFragment" />
         <argument
-            android:name="donationid"
+            android:name="ratingid"
             app:argType="long" />
     </fragment>
 </navigation>

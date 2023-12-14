@@ -1,4 +1,4 @@
-package org.wit.rateMyInstitute.ui.donate
+package org.wit.rateMyInstitute.ui.rate
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

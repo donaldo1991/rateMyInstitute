@@ -1,4 +1,4 @@
-package org.wit.rateMyInstitute.ui.donate
+package org.wit.rateMyInstitute.ui.rate
 
 import android.os.Bundle
 import android.view.*
@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -15,6 +16,7 @@ import org.wit.rateMyInstitute.R
 import org.wit.rateMyInstitute.databinding.FragmentRatingBinding
 import org.wit.rateMyInstitute.models.RatingModel
 import org.wit.rateMyInstitute.ui.report.ReportViewModel
+import org.wit.rateMyInstitute.ui.auth.LoggedInViewModel
 
 class RatingFragment : Fragment() {
 
@@ -24,6 +26,8 @@ class RatingFragment : Fragment() {
     private val fragBinding get() = _fragBinding!!
     //lateinit var navController: NavController
     private lateinit var ratingViewModel: RatingViewModel
+
+    private val loggedInViewModel : LoggedInViewModel by activityViewModels()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
@@ -82,15 +86,17 @@ class RatingFragment : Fragment() {
     fun setButtonListener(layout: FragmentRatingBinding) {
         layout.ratingButton.setOnClickListener {
             var name = layout.instituteName.text.toString()
-            val description = layout.instituteDescription.text.toString()
-            val fee = layout.instituteFee.text.toString().toDouble()
-            val rating = layout.instituteOverallRating.text.toString().toDouble()
-            val gradRate = layout.instituteGradRate.text.toString().toInt()
+            var description = layout.instituteDescription.text.toString()
+            var fee = layout.instituteFee.text.toString().toDouble()
+            var rating = layout.instituteOverallRating.text.toString().toDouble()
+            var gradRate = layout.instituteGradRate.text.toString().toInt()
             if (layout.instituteName.text.isEmpty() || layout.instituteDescription.text.isEmpty()
                 || layout.instituteFee.text.isEmpty() || layout.instituteOverallRating.text.isEmpty()
                 || layout.instituteGradRate.text.isEmpty())
                 Toast.makeText(context,"Please enter all details!", Toast.LENGTH_LONG).show()
-            else (ratingViewModel.addRating(RatingModel(name = name,description = description,fee = fee,overallRating = rating,gradRate = gradRate)))
+            else (ratingViewModel.addRating(RatingModel(name = name,description =
+                description,fee = fee, overallRating = rating,gradRate = gradRate,
+                email = loggedInViewModel.liveFirebaseUser.value?.email!!)))
             }
     }
 
@@ -102,7 +108,7 @@ class RatingFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         val reportViewModel = ViewModelProvider(this).get(ReportViewModel::class.java)
-        reportViewModel.observableDonationsList.observe(viewLifecycleOwner, Observer {
+        reportViewModel.observableRatingsList.observe(viewLifecycleOwner, Observer {
         })
     }
 }
