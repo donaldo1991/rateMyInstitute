@@ -23,8 +23,9 @@ class ReportViewModel : ViewModel() {
 
     fun load() {
         try {
-            RatingManager.findAll(liveFirebaseUser.value?.email!!, ratingsList)
-            Timber.i("Report Load Success : ${ratingsList.value.toString()}")
+            RatingManager.findAll(ratingsList)
+            //RatingManager.findAll(liveFirebaseUser.value?.email!!, ratingsList)
+            Timber.i("Report Load Success : ${ratingsList.value}")
         }
         catch (e: Exception) {
             Timber.i("Report Load Error : ${e.toString()}")

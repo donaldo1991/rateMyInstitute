@@ -8,12 +8,12 @@ import org.wit.rateMyInstitute.databinding.CardRatingBinding
 import org.wit.rateMyInstitute.models.RatingModel
 
 interface RatingClickListener {
-    fun onDonationClick(rating: RatingModel)
+    fun onRatingClick(rating: RatingModel)
 }
 
-class DonationAdapter constructor(private var ratings: List<RatingModel>,
+class RatingAdapter constructor(private var ratings: ArrayList<RatingModel>,
                                   private val listener: RatingClickListener)
-    : RecyclerView.Adapter<DonationAdapter.MainHolder>() {
+    : RecyclerView.Adapter<RatingAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
         val binding = CardRatingBinding
@@ -27,20 +27,21 @@ class DonationAdapter constructor(private var ratings: List<RatingModel>,
         holder.bind(rating,listener)
     }
 
-    override fun getItemCount(): Int = ratings.size
-    fun removeAt(adapterPosition: Int) {
-
+    fun removeAt(position: Int) {
+        ratings.removeAt(position)
+        notifyItemRemoved(position)
     }
 
-    inner class MainHolder(val binding : CardRatingBinding) : RecyclerView.ViewHolder(binding.root) {
+    override fun getItemCount(): Int = ratings.size
+
+    inner class MainHolder(val binding : CardRatingBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bind(rating: RatingModel, listener: RatingClickListener) {
-//            binding.paymentamount.text = donation.amount.toString()
-//            binding.paymentmethod.text = donation.paymentmethod
-
+            binding.root.tag = rating
             binding.rating = rating
             binding.imageIcon.setImageResource(R.mipmap.ic_launcher_round)
-            binding.root.setOnClickListener { listener.onDonationClick(rating) }
+            binding.root.setOnClickListener { listener.onRatingClick(rating) }
             binding.executePendingBindings()
         }
     }

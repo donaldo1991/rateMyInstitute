@@ -8,10 +8,21 @@ import retrofit2.Callback
 import retrofit2.Response
 import timber.log.Timber
 
+var lastId = 0L
+
+internal fun getId(): Long {
+    return lastId++
+}
+
 object RatingManager : RatingStore {
 
     private var ratings = ArrayList<RatingModel>()
 
+    override fun findAll(ratingsList: MutableLiveData<List<RatingModel>>) {
+        Timber.i("Returning the following ratings: $ratings")
+        ratingsList.value = ratings
+    }
+    /*
     override fun findAll(ratingsList: MutableLiveData<List<RatingModel>>) {
 
         val call = RatingClient.getApi().findall()
@@ -29,6 +40,8 @@ object RatingManager : RatingStore {
             }
         })
     }
+
+     */
 
     override fun findAll(email: String, ratingsList: MutableLiveData<List<RatingModel>>) {
 
@@ -64,6 +77,13 @@ object RatingManager : RatingStore {
         })
     }
 
+    override fun create(rating: RatingModel) {
+        rating.id = getId()
+        ratings.add(rating)
+        Timber.i("Rating added : $ratings")
+    }
+
+    /*
     override fun create( rating: RatingModel) {
 
         val call = RatingClient.getApi().post(rating.email,rating)
@@ -84,6 +104,9 @@ object RatingManager : RatingStore {
             }
         })
     }
+
+     */
+
 
     override fun delete(email: String,id: String) {
 

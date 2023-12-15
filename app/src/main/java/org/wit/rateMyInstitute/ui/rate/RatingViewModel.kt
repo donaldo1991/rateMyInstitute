@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import org.wit.rateMyInstitute.models.RatingManager
 import org.wit.rateMyInstitute.models.RatingModel
+import timber.log.Timber
 
 class RatingViewModel : ViewModel() {
 
@@ -15,6 +16,7 @@ class RatingViewModel : ViewModel() {
 
     fun addRating(rating: RatingModel) {
         status.value = try {
+            Timber.i("Rating to be added : $rating")
             RatingManager.create(rating)
             true
         } catch (e: IllegalArgumentException) {
