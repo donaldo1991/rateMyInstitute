@@ -23,7 +23,7 @@ class ReportViewModel : ViewModel() {
 
     fun load() {
         try {
-            RatingManager.findAll(ratingsList)
+            FirebaseDBManager.findAll(liveFirebaseUser.value?.uid!!,ratingsList)
             //RatingManager.findAll(liveFirebaseUser.value?.email!!, ratingsList)
             Timber.i("Report Load Success : ${ratingsList.value}")
         }

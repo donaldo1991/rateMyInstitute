@@ -94,9 +94,9 @@ class RatingFragment : Fragment() {
                 || layout.instituteFee.text.isEmpty() || layout.instituteOverallRating.text.isEmpty()
                 || layout.instituteGradRate.text.isEmpty())
                 Toast.makeText(context,"Please enter all details!", Toast.LENGTH_LONG).show()
-            else (ratingViewModel.addRating(RatingModel(name = name,description =
-                description,fee = fee, overallRating = rating,gradRate = gradRate,
-                email = loggedInViewModel.liveFirebaseUser.value?.email!!)))
+            else (ratingViewModel.addRating(loggedInViewModel.liveFirebaseUser, RatingModel(
+                name = name,description = description,fee = fee, overallRating = rating,
+                gradRate = gradRate, email = loggedInViewModel.liveFirebaseUser.value?.email!!)))
             }
     }
 

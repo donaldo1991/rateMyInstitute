@@ -1,6 +1,7 @@
 package org.wit.rateMyInstitute.models
 
 import androidx.lifecycle.MutableLiveData
+import com.google.firebase.auth.FirebaseUser
 import org.wit.rateMyInstitute.api.RatingClient
 import org.wit.rateMyInstitute.api.RatingWrapper
 import retrofit2.Call
@@ -77,8 +78,8 @@ object RatingManager : RatingStore {
         })
     }
 
-    override fun create(rating: RatingModel) {
-        rating.id = getId()
+    override fun create(firebaseUser: MutableLiveData<FirebaseUser>, rating: RatingModel) {
+        rating.uid = getId().toString()
         ratings.add(rating)
         Timber.i("Rating added : $ratings")
     }

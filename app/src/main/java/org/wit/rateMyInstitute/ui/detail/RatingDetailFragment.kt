@@ -42,7 +42,7 @@ class RatingDetailFragment : Fragment() {
 
         fragBinding.deleteRatingButton.setOnClickListener {
             reportViewModel.delete(loggedInViewModel.liveFirebaseUser.value?.email!!,
-                detailViewModel.observableRating.value?.id!!.toString())
+                detailViewModel.observableRating.value?.uid!!.toString())
             findNavController().navigateUp()
         }
 
