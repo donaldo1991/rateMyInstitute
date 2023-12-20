@@ -6,11 +6,7 @@ RateMyInstitute is an Android application that enables users to rate and review 
 
 ## UML and Class Diagrams
 
-### UML Diagram
-![UML Diagram](./docs/uml_diagram.png)
-
-### Class Diagram
-![Class Diagram](./docs/class_diagram.png)
+![rateMyInstitute_UML](https://github.com/donaldo1991/rateMyInstitute/assets/97483113/c6c0de84-3999-4e98-9b9c-c58c03ad98d3)
 
 ## UX/DX Approach Adopted
 
