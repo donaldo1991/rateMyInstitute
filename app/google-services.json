@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "835702742589",
+    "firebase_url": "https://ratemyinstitute-3d3c3-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "ratemyinstitute-3d3c3",
     "storage_bucket": "ratemyinstitute-3d3c3.appspot.com"
   },
@@ -12,7 +13,16 @@
           "package_name": "org.wit.rateMyInstitute"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "835702742589-s3pelodl1uohqsfv3k4sk39064ahisp0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.wit.rateMyInstitute",
+            "certificate_hash": "f8643d4beb9304961d3290d4bbd2622bb3413ea7"
+          }
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDSfvbY6h57fyNxcP4rQ-U6Rb6D5g1y58o"
@@ -20,7 +30,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "835702742589-5clfdf5vse07du0oi9skvot8f3hfm34u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

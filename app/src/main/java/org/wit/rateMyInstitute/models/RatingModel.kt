@@ -2,21 +2,33 @@ package org.wit.rateMyInstitute.models
 
 import android.net.Uri
 import android.os.Parcelable
+import com.google.firebase.database.Exclude
+import com.google.firebase.database.IgnoreExtraProperties
 import kotlinx.parcelize.Parcelize
 
-@Parcelize
-data class RatingModel(var id: Long = 0,
-                          var name: String = "",
-                          var description: String = "",
-                          var fee: Double = 0.0,
-                          var overallRating: Int = 0,
-                          var gradRate: Int = 0,
-                          var image: Uri = Uri.EMPTY,
-                          var lat : Double = 0.0,
-                          var lng: Double = 0.0,
-                          var zoom: Float = 0f) : Parcelable
 
+@IgnoreExtraProperties
 @Parcelize
-data class Location(var lat: Double = 0.0,
-                    var lng: Double = 0.0,
-                    var zoom: Float = 0f) : Parcelable
+data class RatingModel(
+    var uid: String = "",
+    var name: String = "",
+    var description: String = "",
+    var fee: Double = 0.0,
+    var overallRating: Double = 0.0,
+    var gradRate: Int = 0,
+    val email: String = "joe@bloggs.com") : Parcelable
+
+{
+    @Exclude
+    fun toMap(): Map<String, Any?> {
+        return mapOf(
+            "uid" to uid,
+            "name" to name,
+            "description" to description,
+            "fee" to fee,
+            "overallRating" to overallRating,
+            "gradRate" to gradRate,
+            "email" to email
+        )
+    }
+}
