@@ -39,7 +39,14 @@ object FirebaseDBManager : RatingStore {
     }
 
     override fun findById(userid: String, ratingid: String, rating: MutableLiveData<RatingModel>) {
-        TODO("Not yet implemented")
+
+        database.child("user-ratings").child(userid)
+            .child(ratingid).get().addOnSuccessListener {
+                rating.value = it.getValue(RatingModel::class.java)
+                Timber.i("firebase Got value ${it.value}")
+            }.addOnFailureListener{
+                Timber.e("firebase Error getting data $it")
+            }
     }
 
     override fun create(firebaseUser: MutableLiveData<FirebaseUser>, rating: RatingModel) {
@@ -62,10 +69,20 @@ object FirebaseDBManager : RatingStore {
     }
 
     override fun delete(userid: String, ratingid: String) {
-        TODO("Not yet implemented")
+        val childDelete : MutableMap<String, Any?> = HashMap()
+        childDelete["/ratings/$ratingid"] = null
+        childDelete["/user-ratings/$userid/$ratingid"] = null
+
+        database.updateChildren(childDelete)
     }
 
     override fun update(userid: String, ratingid: String, rating: RatingModel) {
-        TODO("Not yet implemented")
+        val ratingValues = rating.toMap()
+
+        val childUpdate : MutableMap<String, Any?> = HashMap()
+        childUpdate["ratings/$ratingid"] = ratingValues
+        childUpdate["user-ratings/$userid/$ratingid"] = ratingValues
+
+        database.updateChildren(childUpdate)
     }
 }

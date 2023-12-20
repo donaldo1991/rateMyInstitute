@@ -68,7 +68,7 @@ class ReportFragment : Fragment(), RatingClickListener {
                 showLoader(loader,"Deleting rating")
                 val adapter = fragBinding.recyclerView.adapter as RatingAdapter
                 adapter.removeAt(viewHolder.adapterPosition)
-                reportViewModel.delete(reportViewModel.liveFirebaseUser.value?.email!!,
+                reportViewModel.delete(reportViewModel.liveFirebaseUser.value?.uid!!,
                     (viewHolder.itemView.tag as RatingModel).uid.toString())
 
                 hideLoader(loader)
@@ -119,7 +119,7 @@ class ReportFragment : Fragment(), RatingClickListener {
     }
 
     override fun onRatingClick(rating: RatingModel) {
-        val action = ReportFragmentDirections.actionReportFragmentToDonationDetailFragment(rating.uid.toLong())
+        val action = ReportFragmentDirections.actionReportFragmentToDonationDetailFragment(rating.uid)
         findNavController().navigate(action)
     }
 

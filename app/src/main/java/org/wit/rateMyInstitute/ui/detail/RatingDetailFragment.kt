@@ -35,8 +35,11 @@ class RatingDetailFragment : Fragment() {
         detailViewModel.observableRating.observe(viewLifecycleOwner, Observer { render() })
 
         fragBinding.editRatingButton.setOnClickListener {
-            detailViewModel.updateRating(loggedInViewModel.liveFirebaseUser.value?.email!!,
-                args.ratingid.toString(), fragBinding.ratingvm?.observableRating!!.value!!)
+            Timber.i("firebase user id == ${loggedInViewModel.liveFirebaseUser.value?.uid!!}")
+            Timber.i("rating id == ${args.ratingid}")
+            Timber.i("rating == ${fragBinding.ratingvm?.observableRating!!.value!!}")
+            detailViewModel.updateRating(loggedInViewModel.liveFirebaseUser.value?.uid!!,
+                args.ratingid, fragBinding.ratingvm?.observableRating!!.value!!)
             findNavController().navigateUp()
         }
 
@@ -59,7 +62,8 @@ class RatingDetailFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         detailViewModel.getRating(loggedInViewModel.liveFirebaseUser.value?.email!!,
-            args.ratingid.toString())
+            args.ratingid
+        )
 
     }
 

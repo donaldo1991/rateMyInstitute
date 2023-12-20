@@ -14,9 +14,10 @@ class RatingDetailViewModel : ViewModel() {
         get() = rating
         set(value) {rating.value = value.value}
 
-    fun getRating(email:String, id: String) {
+    fun getRating(userid:String, id: String) {
         try {
-            RatingManager.findById(email, id, rating)
+            //RatingManager.findById(email, id, rating)
+            FirebaseDBManager.findById(userid, id, rating)
             Timber.i("Detail getrating() Success : ${rating.value.toString()}")
         }
         catch (e: Exception) {
@@ -24,9 +25,10 @@ class RatingDetailViewModel : ViewModel() {
         }
     }
 
-    fun updateRating(email:String, id: String,rating: RatingModel) {
+    fun updateRating(userid:String, id: String,rating: RatingModel) {
         try {
-            RatingManager.update(email, id, rating)
+            //RatingManager.update(email, id, rating)
+            FirebaseDBManager.update(userid, id, rating)
             Timber.i("Detail update() Success : $rating")
         }
         catch (e: Exception) {
