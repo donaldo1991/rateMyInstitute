@@ -6,7 +6,6 @@ import com.google.firebase.database.Exclude
 import com.google.firebase.database.IgnoreExtraProperties
 import kotlinx.parcelize.Parcelize
 
-
 @IgnoreExtraProperties
 @Parcelize
 data class RatingModel(
